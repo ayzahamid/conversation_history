@@ -5,22 +5,30 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <body class="bg-gray-100 text-gray-900">
+    <%= render '/shared/nav_bar' %>
+    <div class="container mx-auto px-6">
+      <% flash.each do |type, message| %>
+        <% flash_class = case type.to_sym
+          when :notice then "flash bg-green-500 text-white"
+          when :alert then "flash bg-red-500 text-white"
+          when :error then "flash bg-red-500 text-white"
+          else "flash bg-gray-500 text-white"
+        end %>
 
-    <% if user_signed_in? %>
-      <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "" %>
-    <% else %>
-      <a href="<%= new_user_session_path %>" class="">Login</a>
-      <a href="<%= new_user_registration_path %>" class="">Sign Up</a>
-    <% end %>
+        <div class="<%= flash_class %> p-4 mb-4 rounded-lg shadow-md">
+          <p><%= message %></p>
+        </div>
+      <% end %>
+    </div>
 
-    <%= yield %>
+    <main class="container mx-auto px-6">
+      <%= yield %>
+    </main>
   </body>
 </html>
