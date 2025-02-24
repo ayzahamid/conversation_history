@@ -1,0 +1,30 @@
+<h2 class="text-2xl font-bold mb-4 mt-20">Conversation History</h2>
+
+<table class="w-full border-collapse border border-gray-300">
+  <thead>
+    <tr class="bg-gray-200">
+      <th class="border p-2">Type</th>
+      <th class="border p-2">Change</th>
+      <th class="border p-2">User</th>
+      <th class="border p-2">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @history.each do |audit| %>
+      <tr class="border-b">
+        <td class="border p-2"><%= audit.auditable_type %></td>
+        <td class="border p-2">
+          <% if audit.auditable_type == "Comment" %>
+            Comment Added: "<%= audit.audited_changes["content"] %>"
+          <% else %>
+            <% prev_status, new_status = audit.audited_changes["status"] %>
+            Status changed from "<%= Project.statuses.key(prev_status) %>" to "<%= Project.statuses.key(new_status) %>"
+          <% end %>
+
+        </td>
+        <td class="border p-2"><%= audit.user&.email || "System" %></td>
+        <td class="border p-2"><%= audit.created_at.strftime("%d %b %Y, %I:%M %p") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

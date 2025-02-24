@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Project < ApplicationRecord
+  audited only: [:status]
+
   has_many :comments, dependent: :destroy
 
   belongs_to :creator, class_name: 'User'

@@ -9,6 +9,7 @@
     <% end %>
   </td>
   <td class="border border-gray-300 px-6 py-3">
-    <%= link_to "View", project_path(project), class: "px-3 py-1 bg-gray-500 text-white rounded" %>
+    <%= link_to "View Project", project_path(project), class: "px-3 py-1 bg-gray-500 text-white rounded" %>
+    <%= link_to "Conversation History", project_conversation_histories_path(project), class: "px-3 py-1 bg-yellow-500 text-white rounded" %>
   </td>
 </tr>

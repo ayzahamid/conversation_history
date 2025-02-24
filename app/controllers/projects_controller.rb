@@ -2,8 +2,9 @@
 
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[show change_status]
+
   def index
-    @project = Project.limit(10)
+    @project = Project.limit(15)
   end
 
   def show

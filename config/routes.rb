@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     resource :comments, only: :create
+    resources :conversation_histories, only: :index
 
     member do
       patch :change_status
