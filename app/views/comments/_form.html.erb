@@ -1,0 +1,8 @@
+<%= form_with model: [@project, Comment.new], data: { turbo_frame: "comments" }, id: 'comment-form', class: "space-y-4" do |f| %>
+  <div>
+    <%= f.text_area :content, class: "w-full p-2 border rounded-lg", placeholder: "Add a comment..." %>
+  </div>
+  <div>
+    <%= f.submit "Post Comment", class: "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition" %>
+  </div>
+<% end %>

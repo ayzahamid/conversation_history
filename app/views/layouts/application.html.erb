@@ -12,6 +12,7 @@
 
   <body class="bg-gray-100 text-gray-900">
     <%= render '/shared/nav_bar' %>
+
     <div class="container mx-auto px-6">
       <% flash.each do |type, message| %>
         <% flash_class = case type.to_sym
