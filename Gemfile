@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 ruby '3.3.4'
 
 gem 'bootsnap', require: false
+gem 'devise', '~> 4.9'
+gem 'devise-security', '~> 0.18.0'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
@@ -16,7 +18,7 @@ gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
 group :development, :test do
-  gem 'debug', platforms: %i[mri windows]
+  gem 'byebug', platforms: %i[mri windows]
   gem 'rubocop'
 end
 
@@ -25,6 +27,8 @@ group :development do
 end
 
 group :test do
-  gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
