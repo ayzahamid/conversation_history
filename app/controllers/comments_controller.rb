@@ -8,10 +8,10 @@ class CommentsController < ApplicationController
     if @comment.save
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to @project, notice: 'Comment added successfully!' }
+        format.html { redirect_to @project, notice: "Comment added successfully!" }
       end
     else
-      redirect_to @project, alert: 'Failed to add comment.'
+      redirect_to @project, alert: "Failed to add comment."
     end
   end
 

@@ -1,0 +1,14 @@
+<tr class="border border-gray-300 hover:bg-gray-50" id="<%= dom_id(project) %>">
+  <td class="border border-gray-300 px-6 py-3"><%= project.name %></td>
+  <td class="border border-gray-300 px-6 py-3"><%= project.description %></td>
+  <td class="border border-gray-300 px-6 py-3"><%= project.code %></td>
+  <td class="py-2 px-4 border-b">
+    <%= form_with model: project, url: change_status_project_path(project), method: :patch, data: { turbo_stream: true } do |f| %>
+      <%= f.select :status, Project.statuses.keys, {}, class: "border rounded px-2 py-1" %>
+      <%= f.submit "Update", class: "ml-2 px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer" %>
+    <% end %>
+  </td>
+  <td class="border border-gray-300 px-6 py-3">
+    <%= link_to "View", project_path(project), class: "px-3 py-1 bg-gray-500 text-white rounded" %>
+  </td>
+</tr>

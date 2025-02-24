@@ -9,5 +9,9 @@ Rails.application.routes.draw do
 
   resources :projects do
     resource :comments, only: :create
+
+    member do
+      patch :change_status
+    end
   end
 end
