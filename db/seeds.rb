@@ -1,21 +1,19 @@
-# Create Users
 user1 = User.create!(
   first_name: "Alice",
   last_name: "Doe",
   email: "alice@example.com",
-  password: "password123",
-  password_confirmation: "password123"
+  password: "Pas$w0rd2",
+  password_confirmation: "Pas$w0rd2"
 )
 
 user2 = User.create!(
   first_name: "Bob",
   last_name: "Smith",
   email: "bob@example.com",
-  password: "password123",
-  password_confirmation: "password123"
+  password: "Pas$w0rd2",
+  password_confirmation: "Pas$w0rd2"
 )
 
-# Create Projects
 projects = []
 5.times do |i|
   projects << Project.create!(
@@ -27,7 +25,6 @@ projects = []
   )
 end
 
-# Create Comments for Project 1
 project1 = projects.first
 3.times do |i|
   project1.comments.create!(

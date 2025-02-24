@@ -1,24 +1,47 @@
-# README
+# Homey Coversation History
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Setup Instructions
 
-Things you may want to cover:
+## 1 Install Dependencies
 
-* Ruby version
+Ensure you have Docker and Docker Compose installed.
 
-* System dependencies
+## 2 Start the Application
 
-* Configuration
+Run the following command:
 
-* Database creation
+```
+docker-compose up --build
+```
 
-* Database initialization
+This command will build the Docker image, start the PostgreSQL database and start the Rails application.
 
-* How to run the test suite
+## 3 Setup the Database
 
-* Services (job queues, cache servers, search engines, etc.)
+Once the container is running, open another terminal and run:
 
-* Deployment instructions
+```
+docker-compose exec web rails db:setup
+```
 
-* ...
+This command will create the database, run migrations and seed initial data.
+
+## 4 Access the Application
+
+Open http://localhost:3000 in your browser.
+
+## 5 Test with Seeded Users
+
+You can log in using the following test accounts:
+
+```
+User# 1
+Email: alice@example.com
+Password: Pas$w0rd2
+```
+
+```
+User# 2
+Email: bob@example.com
+Password: Pas$w0rd2
+```
